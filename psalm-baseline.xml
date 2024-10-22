@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
+  <file src="src/Entities/TelegramData.php">
+    <PossiblyUnusedProperty>
+      <code><![CDATA[$authDate]]></code>
+      <code><![CDATA[$queryId]]></code>
+      <code><![CDATA[$source]]></code>
+    </PossiblyUnusedProperty>
+  </file>
+  <file src="src/Entities/TelegramUser.php">
+    <PossiblyUnusedProperty>
+      <code><![CDATA[$allowWriteToPm]]></code>
+      <code><![CDATA[$isPremium]]></code>
+      <code><![CDATA[$languageCode]]></code>
+    </PossiblyUnusedProperty>
+  </file>
+  <file src="src/Providers/ServiceProvider.php">
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[$app]]></code>
+    </UndefinedInterfaceMethod>
+    <UnusedClass>
+      <code><![CDATA[ServiceProvider]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/TelegramUserGuard.php">
+    <InvalidScalarArgument>
+      <code><![CDATA[$this->autoCreation]]></code>
+    </InvalidScalarArgument>
+  </file>
+</files>
