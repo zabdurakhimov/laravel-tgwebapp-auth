@@ -31,8 +31,7 @@ class TelegramUserGuard implements Guard
         private readonly string $botToken,
         private readonly string $autoCreation,
         private readonly string $userDataHeaderName
-    )
-    {
+    ) {
     }
 
     public function user(): Authenticatable|null
