@@ -22,7 +22,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
                 $app['request'],
                 $app->make(IUserRepository::class),
                 $config['token'],
-                $config['autoCreation']
+                $config['autoCreation'],
+                $config['userDataHeaderName']
             );
         });
     }

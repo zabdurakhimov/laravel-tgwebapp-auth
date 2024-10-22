@@ -25,7 +25,13 @@ class TelegramUserGuard implements Guard
      */
     protected $user;
 
-    public function __construct(private readonly Request $request, private readonly IUserRepository $userRepository, private readonly string $botToken, private readonly string $autoCreation)
+    public function __construct(
+        private readonly Request $request,
+        private readonly IUserRepository $userRepository,
+        private readonly string $botToken,
+        private readonly string $autoCreation,
+        private readonly string $userDataHeaderName
+    )
     {
     }
 
@@ -39,7 +45,7 @@ class TelegramUserGuard implements Guard
             return $this->user;
         }
 
-        $userData = $this->request->header('X-TELEGRAM-USER-DATA');
+        $userData = $this->request->header($this->userDataHeaderName);
         if (!filled($userData)) {
             return null;
         }
