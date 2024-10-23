@@ -7,5 +7,5 @@ use SMSkin\LaravelTgWebAppAuth\Entities\TelegramData;
 
 interface IUserRepository
 {
-    public function getUser(TelegramData $telegramData, bool $autoCreation): Authenticatable|null;
+    public function getUser(TelegramData $telegramData, bool $autoCreation, string $userModel): Authenticatable|null;
 }

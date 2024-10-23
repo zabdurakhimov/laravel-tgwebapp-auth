@@ -32,7 +32,8 @@ Example of the file content after registering the guard:
         'driver' => 'tgwebapp', // the name of the guard
         'token' => env('TELEGRAM_BOT_TOKEN'), // bot token
         'autoCreation' => true, // flag allowing automatic user creation
-        'userDataHeaderName' => 'X-TELEGRAM-USER-DATA' // header name from which the guard retrieves the WebAppUser object
+        'userDataHeaderName' => 'X-TELEGRAM-USER-DATA', // header name from which the guard retrieves the WebAppUser object
+        'userModel' => \App\Models\User::class, // user model class
     ]
 ],
 ...
@@ -40,7 +41,7 @@ Example of the file content after registering the guard:
 
 ## Usage
 
-Include the guard in the routing file routes/web.php.
+Include the guard in the routing file `routes/web.php`.
 
 ```text
 ...

@@ -31,7 +31,8 @@
         'driver' => 'tgwebapp', // название guard
         'token' => env('TELEGRAM_BOT_TOKEN'), // токен бота
         'autoCreation' => true, // флаг, разрешающий автоматическое создание пользователей
-        'userDataHeaderName' => 'X-TELEGRAM-USER-DATA' // название заголовка, из которого guard получает объект WebAppUser
+        'userDataHeaderName' => 'X-TELEGRAM-USER-DATA' // название заголовка, из которого guard получает объект WebAppUser,
+        'userModel' => \App\Models\User::class, // класс user модели
     ]
 ],
 ...

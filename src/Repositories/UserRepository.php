@@ -13,11 +13,11 @@ use SMSkin\LaravelTgWebAppAuth\Entities\TelegramUser;
 
 class UserRepository implements IUserRepository
 {
-    public function getUser(TelegramData $telegramData, bool $autoCreation): Authenticatable|null
+    public function getUser(TelegramData $telegramData, bool $autoCreation, string $userModel): Authenticatable|null
     {
         $telegramUser = $telegramData->user;
 
-        $user = $this->getByEmail($telegramUser->getEmail());
+        $user = $this->getByEmail($userModel, $telegramUser->getEmail());
         if ($user) {
             return $user;
         }
@@ -27,20 +27,20 @@ class UserRepository implements IUserRepository
         }
 
         try {
-            return $this->createUser($telegramUser);
+            return $this->createUser($userModel, $telegramUser);
         } catch (UniqueConstraintViolationException) {
-            return $this->getByEmail($telegramUser->getEmail());
+            return $this->getByEmail($userModel, $telegramUser->getEmail());
         }
     }
 
-    private function getByEmail(string $email): User|null
+    private function getByEmail(string $userModel, string $email): User|null
     {
-        return User::where('email', $email)->first();
+        return app($userModel)::where('email', $email)->first();
     }
 
-    private function createUser(TelegramUser $telegramUser): Authenticatable
+    private function createUser(string $userModel, TelegramUser $telegramUser): Authenticatable
     {
-        $context = new User();
+        $context = new $userModel();
         $context->name = $telegramUser->getFullName();
         $context->email = $telegramUser->getEmail();
         $context->email_verified_at = now();

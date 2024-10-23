@@ -30,7 +30,8 @@ class TelegramUserGuard implements Guard
         private readonly IUserRepository $userRepository,
         private readonly string $botToken,
         private readonly string $autoCreation,
-        private readonly string $userDataHeaderName
+        private readonly string $userDataHeaderName,
+        private readonly string $userModel
     ) {
     }
 
@@ -71,7 +72,7 @@ class TelegramUserGuard implements Guard
             return null;
         }
 
-        return $this->user = $this->userRepository->getUser($telegramData, $this->autoCreation);
+        return $this->user = $this->userRepository->getUser($telegramData, $this->autoCreation, $this->userModel);
     }
 
     public function validate(array $credentials = []): bool
