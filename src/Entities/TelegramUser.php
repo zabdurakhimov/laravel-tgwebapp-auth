@@ -7,7 +7,7 @@ class TelegramUser
     public string $id;
     public string $firstName;
     public string $lastName;
-    public string $username;
+    public string|null $username;
     public string $languageCode;
     public bool|null $isPremium;
     public bool $allowWriteToPm;
@@ -18,7 +18,7 @@ class TelegramUser
         $this->id = $data->id;
         $this->firstName = $data->first_name;
         $this->lastName = $data->last_name;
-        $this->username = $data->username;
+        $this->username = $data->username ?? null;
         $this->languageCode = $data->language_code;
         $this->isPremium = $data->is_premium ?? null;
         $this->allowWriteToPm = $data->allows_write_to_pm;
