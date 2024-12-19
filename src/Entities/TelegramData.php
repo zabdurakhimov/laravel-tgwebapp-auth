@@ -8,7 +8,7 @@ class TelegramData
 {
     public string $source;
     public array $sourceData;
-    public string $queryId;
+    public string|null $queryId;
     public TelegramUser $user;
     public Carbon $authDate;
     public string $hash;
@@ -19,7 +19,7 @@ class TelegramData
         parse_str(urldecode($string), $data);
         $this->sourceData = $data;
 
-        $this->queryId = $data['query_id'];
+        $this->queryId = $data['query_id'] ?? null;
         $this->user = (new TelegramUser())->unSerialize($data['user']);
         $this->authDate = Carbon::createFromTimestamp($data['auth_date']);
         $this->hash = $data['hash'];
