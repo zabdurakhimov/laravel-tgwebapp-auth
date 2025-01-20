@@ -10,7 +10,7 @@ class TelegramUser
     public string|null $username;
     public string $languageCode;
     public bool|null $isPremium;
-    public bool $allowWriteToPm;
+    public bool|null $allowWriteToPm;
 
     public function unSerialize(string $string): self
     {
@@ -21,7 +21,7 @@ class TelegramUser
         $this->username = $data->username ?? null;
         $this->languageCode = $data->language_code;
         $this->isPremium = $data->is_premium ?? null;
-        $this->allowWriteToPm = $data->allows_write_to_pm;
+        $this->allowWriteToPm = $data->allows_write_to_pm ?? null;
         return $this;
     }
 
