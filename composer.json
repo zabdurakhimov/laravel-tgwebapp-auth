@@ -1,5 +1,5 @@
 {
-  "name": "smskin/laravel-tgwebapp-auth",
+  "name": "zabdurakhimov/laravel-tgwebapp-auth",
   "description": "Authentication guard for Telegram web app user integration",
   "license": "MIT",
   "type": "library",
